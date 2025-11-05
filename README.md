@@ -78,7 +78,7 @@ flowchart TD
 A[Start] --> B[Employee logs into Intranet Portal]
 B --> C[VTS authenticates Employee via SSO]
 C --> D[Retrieve vacation data from HR system]
-D --> E[Display dashboard (past 6 months & next 18 months)]
+D --> E["Display dashboard (past 6 months and next 18 months)"]
 
 E --> F[Employee selects 'Create New Request']
 F --> G[Employee enters dates, hours, and description]
