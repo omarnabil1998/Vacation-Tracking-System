@@ -60,3 +60,10 @@ The system’s ultimate purpose is to empower employees, streamline HR operation
     
 -   All employees have access to the organization’s intranet portal and can log in via SSO.
     
+
+## 6. Actors
+
+- **Employee** : Uses the system to view, create, and manage their own vacation and leave requests.
+- **Manager** : Approves or rejects employee leave requests and can grant additional leave within limits.
+- **HR Clerk** : Maintains employee records, updates leave data, and ensures information accuracy across systems.
+- **System Administrator** : Manages system operations, performance, and technical maintenance.
