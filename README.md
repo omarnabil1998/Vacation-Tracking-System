@@ -67,3 +67,36 @@ The system’s ultimate purpose is to empower employees, streamline HR operation
 - **Manager** : Approves or rejects employee leave requests and can grant additional leave within limits.
 - **HR Clerk** : Maintains employee records, updates leave data, and ensures information accuracy across systems.
 - **System Administrator** : Manages system operations, performance, and technical maintenance.
+
+## 7. Sequence Diagram
+![sequencediagram](./Sequence-Diagram.svg)
+
+## 8. FlowChart
+```mermaid
+flowchart TD
+
+A[Start] --> B[Employee logs into Intranet Portal]
+B --> C[VTS authenticates Employee via SSO]
+C --> D[Retrieve vacation data from HR system]
+D --> E[Display dashboard (past 6 months & next 18 months)]
+
+E --> F[Employee selects 'Create New Request']
+F --> G[Employee enters dates, hours, and description]
+G --> H[Validate request]
+
+H -->|Invalid data| I[Show errors on form]
+I --> J[Employee corrects and resubmits]
+J --> H
+
+H -->|Valid data| K[Save request (status: Pending Approval)]
+K --> L[Send email notification to Manager]
+L --> M[Return Employee to VTS Home Page]
+
+M --> N[Manager receives email with approval link]
+N --> O[Manager logs into Portal and VTS]
+O --> P[Manager views pending requests]
+P --> Q[Manager approves or rejects request]
+Q --> R[Update request state in VTS]
+R --> S[Send notification email to Employee]
+S --> T[End]
+```
