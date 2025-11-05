@@ -88,7 +88,7 @@ H -->|Invalid data| I[Show errors on form]
 I --> J[Employee corrects and resubmits]
 J --> H
 
-H -->|Valid data| K[Save request (status: Pending Approval)]
+H -->|Valid data| K["Save request (status: Pending Approval)"]
 K --> L[Send email notification to Manager]
 L --> M[Return Employee to VTS Home Page]
 
