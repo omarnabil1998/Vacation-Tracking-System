@@ -68,10 +68,15 @@ The system’s ultimate purpose is to empower employees, streamline HR operation
 - **HR Clerk** : Maintains employee records, updates leave data, and ensures information accuracy across systems.
 - **System Administrator** : Manages system operations, performance, and technical maintenance.
 
-## 7. Sequence Diagram
-![sequencediagram](./Sequence-Diagram.svg)
+## 7. Request State Diagram
+![RequestStateDiagram](./Request-State-Diagram.svg)
 
-## 8. FlowChart
+
+## 8. Use Case: Manage Time
+### 8.1 Sequence Diagram
+![ManageSequenceDiagram](./Manage-Sequence-Diagram.svg)
+
+### 8.2 FlowChart
 ```mermaid
 flowchart TD
 
@@ -99,4 +104,96 @@ P --> Q[Manager approves or rejects request]
 Q --> R[Update request state in VTS]
 R --> S[Send notification email to Employee]
 S --> T[End]
+```
+
+## 9. Use Case: Withdraw Request
+### 9.1 Sequence Diagram
+![WithdrawSequenceDiagram](./Withdraw-Sequence-Diagram.svg)
+
+### 9.2 FlowChart
+```mermaid
+flowchart TD
+
+A[Employee navigates to VTS via intranet portal (SSO authenticated)] --> B[VTS displays homepage with summary & balances]
+
+B --> C[Employee selects a pending vacation request to withdraw]
+
+C --> D[VTS prompts employee to confirm withdrawal]
+
+D --> E{Employee confirms?}
+
+E -->|Yes| F[Remove request from manager's pending approvals list]
+E -->|No| B
+
+F --> G[Send notification email to manager]
+
+G --> H[Update request status to WITHDRAWN]
+
+H --> I[End]
+```
+
+## 10. Use Case: Cancel Approved Request
+### 10.1 Sequence Diagram
+![CancelSequenceDiagram](./Cancel-Sequence-Diagram.svg)
+
+### 10.2 FlowChart
+```mermaid
+flowchart TD
+
+A[Employee navigates to VTS via intranet portal (SSO authenticated)] --> B[VTS displays homepage with summary & balances]
+
+B --> C[Employee selects an approved request to cancel (future or recent past)]
+
+C --> D{Is the request in the future?}
+
+D -->|Yes| E[VTS prompts employee to confirm cancellation]
+D -->|No (Recent past)| F[VTS prompts confirm + request explanation]
+
+E --> G{Employee confirms cancellation?}
+F --> G{Employee confirms cancellation?}
+
+G -->|Yes| H[Employee provides required information]
+G -->|No| B
+
+H --> I[Send notification email to manager]
+
+I --> J[Change request state to CANCELED]
+
+J --> K[Return time allowances to employee]
+
+K --> B[Return to Homepage and update summaries]
+```
+
+## 11. Use Case: Edit Pending Request
+### 11.1 Sequence Diagram
+![EditSequenceDiagram](./Edit-Sequence-Diagram.svg)
+
+### 11.2 FlowChart
+```mermaid
+flowchart TD
+
+A[Employee navigates to VTS via intranet portal (SSO authenticated)] --> B[VTS displays homepage with summaries & balances]
+
+B --> C[Employee selects a pending request to edit]
+
+C --> D[VTS displays editable view (title, comments, dates) \n employee may edit or withdraw]
+
+D --> E{Did employee choose to withdraw?}
+
+E -->|Yes| F[VTS prompts for confirmation]
+F --> G{Employee confirms withdrawal?}
+G -->|Yes| H[Withdraw request]
+H --> I[Return to VTS Homepage]
+I --> B
+G -->|No| D
+
+E -->|No (Employee edits fields)| J[Employee submits edits]
+
+J --> K{Are there validation errors?}
+
+K -->|Yes| L[Redisplay edit page and show errors]
+L --> D
+
+K -->|No| M[Accept changes]
+M --> I[Return to VTS Homepage (updated summaries)]
 ```
