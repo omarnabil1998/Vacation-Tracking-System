@@ -114,7 +114,7 @@ S --> T[End]
 ```mermaid
 flowchart TD
 
-A[Employee navigates to VTS via intranet portal (SSO authenticated)] --> B[VTS displays homepage with summary & balances]
+A["Employee navigates to VTS via intranet portal (SSO authenticated)"] --> B[VTS displays homepage with summary & balances]
 
 B --> C[Employee selects a pending vacation request to withdraw]
 
@@ -140,9 +140,9 @@ H --> I[End]
 ```mermaid
 flowchart TD
 
-A[Employee navigates to VTS via intranet portal (SSO authenticated)] --> B[VTS displays homepage with summary & balances]
+A["Employee navigates to VTS via intranet portal (SSO authenticated)"] --> B[VTS displays homepage with summary & balances]
 
-B --> C[Employee selects an approved request to cancel (future or recent past)]
+B --> C["Employee selects an approved request to cancel (future or recent past)"]
 
 C --> D{Is the request in the future?}
 
@@ -172,11 +172,11 @@ K --> B[Return to Homepage and update summaries]
 ```mermaid
 flowchart TD
 
-A[Employee navigates to VTS via intranet portal (SSO authenticated)] --> B[VTS displays homepage with summaries & balances]
+A["Employee navigates to VTS via intranet portal (SSO authenticated)"] --> B[VTS displays homepage with summaries & balances]
 
 B --> C[Employee selects a pending request to edit]
 
-C --> D[VTS displays editable view (title, comments, dates) \n employee may edit or withdraw]
+C --> D["VTS displays editable view (title, comments, dates) \n employee may edit or withdraw"]
 
 D --> E{Did employee choose to withdraw?}
 
@@ -195,5 +195,5 @@ K -->|Yes| L[Redisplay edit page and show errors]
 L --> D
 
 K -->|No| M[Accept changes]
-M --> I[Return to VTS Homepage (updated summaries)]
+M --> I["Return to VTS Homepage (updated summaries)"]
 ```
