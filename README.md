@@ -147,7 +147,7 @@ B --> C["Employee selects an approved request to cancel (future or recent past)"
 C --> D{Is the request in the future?}
 
 D -->|Yes| E[VTS prompts employee to confirm cancellation]
-D -->|No (Recent past)| F[VTS prompts confirm + request explanation]
+D -->|"No (Recent past)"| F[VTS prompts confirm + request explanation]
 
 E --> G{Employee confirms cancellation?}
 F --> G{Employee confirms cancellation?}
@@ -187,7 +187,7 @@ H --> I[Return to VTS Homepage]
 I --> B
 G -->|No| D
 
-E -->|No (Employee edits fields)| J[Employee submits edits]
+E -->|"No (Employee edits fields)"| J[Employee submits edits]
 
 J --> K{Are there validation errors?}
 
